@@ -20,6 +20,7 @@ Satellite imagery is a valuable source for monitoring land use and vegetation pa
 - Visualization: Provide visualizations of the classified regions.
 
 **Data**
-- The data used in this project consists of satellite imagery time series form sentinel-2. Possible sources:
+
+The data used in this project consists of satellite imagery time series form sentinel-2. Possible sources:
     - Landsat
     - MODIS
