@@ -3,45 +3,69 @@
 \usepackage{amsmath}
 \usepackage{hyperref}
 
-\title{Final Report on Data Analysis}
-\author{Your Name}
-\date{\today}
+\title{Classification of Vegetation Types Using Time Series Satellite Imagery - Sentinel-2}
+\author{Filippo Giovagnini}
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-This report presents the findings and methodologies used in the data analysis project. The aim of this project was to analyze the given dataset and derive meaningful insights.
+    This report presents the findings and methodologies used in the data analysis project titled "Classification of Vegetation Types Using Time Series Satellite Imagery - Sentinel-2". The aim of this project was to analyze time series satellite imagery data from Sentinel-2 to classify different vegetation types. Various data preprocessing techniques and analytical methods, including machine learning algorithms, were employed to ensure the accuracy and reliability of the results. The key findings highlight significant patterns and trends within the satellite imagery data, providing valuable information for environmental monitoring and decision-making.
 \end{abstract}
 
 \section{Introduction}
 \label{sec:intro}
-Provide an introduction to the project, including background information and objectives.
+We first present some initial considerations that allowed for the implementation of several methods and then the selection of the most efficient one. First of all, it was observed that the problem in question falls into the category of classification problems. There is a certain number of vectors of length 46 (corresponding to the 46 images taken by the Sentinel-2 satellite) accompanied by a label that corresponds to the type of crop present in that geographic region. A preliminary consideration for selecting the appropriate model is the following. Since the dataset was obtained by randomly selecting pixels from the images taken by the satellite, there is no spatial information. This means that the relative position of the various pixels in the dataset cannot be exploited. One possibility, in fact, would have been to first use neural networks to recognize plots of land, thereby creating a sort of vocabulary, and then use a neural network to classify each recognized plot based on its temporal evolution. However, the work done in Garnot et al. (2019) is interesting but not applicable to this problem. Therefore, the focus shifts to studying methods that limit themselves to classification based on temporal evolution. The programming language that will be used in this work is Python. The computer on which the programs were run is a 2020 MacBook Pro (8-core CPU with 4 performance cores and 4 efficiency cores, 8-core GPU, 16-core Neural Engine).
 
-\section{Methodology}
-\label{sec:method}
-Describe the methods and techniques used for data analysis. Include any preprocessing steps, algorithms, and tools used.
+
+
+\section{Preliminary Analysis and Data Preprocessing}
+\subsection{Qualitative Analysis}
+
+From now on, we will refer to a pixel as the geographic region represented by a single vector of dimension $(1,46)$, which in our case corresponds to an area of $64 m^2$.
+The following table shows the occurrences of the various crops:
+\begin{table}[htpb!]
+\centering
+\begin{tabular}{|l|c|}
+\hline \text{Crop Number} & \text{Occurrences} \\
+\hline 1 & 47696 \\
+2 & 33204 \\
+3 & 6524 \\
+4 & 864 \\
+5 & 7524 \\
+6 & 18692 \\
+7 & 9616 \\
+8 & 12952 \\
+9 & 30204 \\
+10 & 2640 \\
+12 & 4900 \\
+13 & 412 \\
+14 & 14020 \\
+15 & 1272 \\
+17 & 3692 \\
+18 & 864 \\
+19 & 3860 \\
+20 & 488 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[htpb!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{output.png}
+    \caption{Representation of a vector from the dataset.}
+    \label{fig:visualization}
+\end{figure}
+
+\section{Choice of the model}
+\label{sec:model}
+
 
 \section{Results}
 \label{sec:results}
 Present the results of the data analysis. Include figures and tables as necessary.
 
-
-
-\begin{table}[h]
-    \centering
-    \begin{tabular}{|c|c|c|}
-        \hline
-        Column1 & Column2 & Column3 \\
-        \hline
-        Data1 & Data2 & Data3 \\
-        Data4 & Data5 & Data6 \\
-        \hline
-    \end{tabular}
-    \caption{Caption for the table.}
-    \label{tab:example}
-\end{table}
 
 \section{Discussion}
 \label{sec:discussion}
