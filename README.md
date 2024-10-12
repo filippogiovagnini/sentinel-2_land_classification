@@ -3,6 +3,7 @@
 This project focuses on classifying vegetation types or land use on a piece of land by analyzing time series data from satellite imagery. The goal is to identify and categorize different types of vegetation or crops based on the observed patterns over time.
 
 **Introduction**
+
 Satellite imagery is a valuable source for monitoring land use and vegetation patterns over time. By analyzing time series data, it is possible to detect changes and classify different types of land cover. This project uses machine learning techniques to classify vegetation types based on the temporal patterns in satellite imagery.
 
 **Objectives**
