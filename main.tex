@@ -58,9 +58,27 @@ The following table shows the occurrences of the various crops:
     \label{fig:visualization}
 \end{figure}
 
+The choice of the model was made by comparing the results obtained with the various models. The models that were tested are the following:
+\begin{itemize}
+    \item Convolutional Neural Network (CNN)
+    \item Long Short-Term Memory (LSTM)
+\end{itemize}
+
+\section{Cross Validation of LSTM Model}
+
+
+
 \section{Choice of the model}
 \label{sec:model}
 
+As the second gave a better accuracy, we decided to use the LSTM model. The model was trained using the Adam optimizer with a learning rate of $0.001$ and a batch size of $64$. The model was trained for $100$ epochs. The loss function used was the categorical cross-entropy.
+
+\begin{figure}[htpb!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{accuracy.png}
+    \caption{Accuracy of the LSTM model.}
+    \label{fig:loss}
+\end{figure}
 
 \section{Results}
 \label{sec:results}
@@ -74,10 +92,5 @@ Discuss the implications of the results and any limitations of the analysis.
 \section{Conclusion}
 \label{sec:conclusion}
 Summarize the key findings and suggest possible future work.
-
-\section{References}
-\label{sec:references}
-\bibliographystyle{plain}
-\bibliography{references}
 
 \end{document}
