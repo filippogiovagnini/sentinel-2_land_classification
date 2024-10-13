@@ -2,6 +2,27 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\lstset{
+    language=Python, % Change this to the language you are using
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    commentstyle=\color{green},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{lightgray},
+    showspaces=false,
+    showstringspaces=false,
+    breaklines=true,
+    frame=single,
+    captionpos=b
+}
 
 \title{Classification of Vegetation Types Using Time Series Satellite Imagery - Sentinel-2}
 \author{Filippo Giovagnini}
@@ -66,12 +87,35 @@ The choice of the model was made by comparing the results obtained with the vari
 
 \section{Cross Validation of LSTM Model}
 
+In order to find the best hyperparameters for the LSTM model, a grid search was performed. The following hyperparameters were tested:
+
+\begin{lstlisting}[caption={Hyperparameters}, label={lst:example}]
+    param_grid = {
+    'input_dim': [46],
+    'hidden_dim': [128, 256, 512],
+    'layer_dim': [1, 2],
+    'output_dim': [20],
+    'seq_dim': [128],
+    'lr': [0.001, 0.0005],
+    'batch_size': [64, 128],
+    'n_epochs': [100, 200],
+    'patience': [10, 20]
+    }
+\end{lstlisting}
+
+The best hyperparameters were found to be the following:
+
+\[
+    (46, 128, 1, 20, 128, 0.001, 64, 200, 20)
+\]
+
+The Cross Validatiion was performed ony in $n = 50000$ samples of the dataset. 
 
 
 \section{Choice of the model}
 \label{sec:model}
 
-As the second gave a better accuracy, we decided to use the LSTM model. The model was trained using the Adam optimizer with a learning rate of $0.001$ and a batch size of $64$. The model was trained for $100$ epochs. The loss function used was the categorical cross-entropy.
+As the second gave a better accuracy, we decided to use the LSTM model. The model was trained using the Adam optimizer with a learning rate of $0.001$ and a batch size of $64$. The model was trained for $500$ epochs. The loss function used was the categorical Cross-Entropy.
 
 \begin{figure}[htpb!]
     \centering
@@ -82,15 +126,7 @@ As the second gave a better accuracy, we decided to use the LSTM model. The mode
 
 \section{Results}
 \label{sec:results}
-Present the results of the data analysis. Include figures and tables as necessary.
 
-
-\section{Discussion}
-\label{sec:discussion}
-Discuss the implications of the results and any limitations of the analysis.
-
-\section{Conclusion}
-\label{sec:conclusion}
-Summarize the key findings and suggest possible future work.
+It turns out that the accuracy of the LSTM model is $81.93$. The training time is also relatively low, as the model was trained in $23$ minutes. The model was trained on $199424$ samples of the dataset. You can find all the code used in \href{https://github.com/filippogiovagnini/sentinel-2_land_classification}{https://github.com/filippogiovagnini/sentinel-2\_land\_classification}.
 
 \end{document}
