@@ -14,4 +14,8 @@
 *.nav
 *.snm
 *.vrb
-*.pth
+best_fold_1.pth
+best_fold_2.pth
+best_fold_3.pth
+best_fold_4.pth
+best_fold_5.pth
